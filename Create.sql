@@ -18,22 +18,24 @@ CREATE TABLE PICKUPCUSTOMERS(
 	customer_id			NUMBER(5) PRIMARY KEY NOT NULL,
 	first_name 			VARCHAR(55) NOT NULL,
 	last_name 			VARCHAR(55) NOT NULL,
-	ranking 			NUMBER(10),
+	--ranking 			NUMBER(10),
 	credit_card_number 		NUMBER(16),
 	credit_card_name 		VARCHAR(110),
 	expiration_date 		DATE,
-	location  			VARCHAR(20),
+	location  			VARCHAR(225),
+	city				VARCHAR(50),
 	CONSTRAINT Cfullname UNIQUE (first_name, last_name));
 
 CREATE TABLE FRIENDS(
 	facebook_username		VARCHAR(110) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
 	address				VARCHAR(250),
-	status				VARCHAR(6),
+	status				VARCHAR(7),
 	current_location		VARCHAR(20),
 	CONSTRAINT FcustomerID
 		FOREIGN KEY (customer_id)
-		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE);
+		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,
+	CONSTRAINT check_status CHECK (status IN('online','offline', 'incab')));
 
 CREATE TABLE VEHICLE(
 	vehicle_id			NUMBER(5) PRIMARY KEY NOT NULL,
@@ -43,7 +45,8 @@ CREATE TABLE VEHICLE(
 	year				NUMBER(4),
 	inspection_status		VARCHAR(4) NOT NULL,
 	plate_number			VARCHAR(15) NOT NULL,
-	CONSTRAINT plate UNIQUE (plate_number));
+	CONSTRAINT plate UNIQUE (plate_number),
+	CONSTRAINT check_istatus CHECK (inspection_status IN('pass', 'fail')));
 
 CREATE TABLE DRIVER(
 	driver_id			NUMBER(5) PRIMARY KEY NOT NULL,

@@ -50,7 +50,7 @@ CREATE TABLE DRIVER(
 	first_name			VARCHAR(55) NOT NULL,
 	last_name			VARCHAR(55) NOT NULL,
 	cumulative_rating		NUMBER(3),
-	total_fare_earned		VARCHAR(10),
+	total_fare_earned		NUMBER(10,2),
 	vehicle_id			NUMBER(5) NOT NULL,		
 	CONSTRAINT DvehicleID
 		FOREIGN KEY (vehicle_id)

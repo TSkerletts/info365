@@ -53,7 +53,7 @@ CREATE TABLE DRIVER(
 	first_name			VARCHAR(55) NOT NULL,
 	last_name			VARCHAR(55) NOT NULL,
 	cumulative_rating		NUMBER(3),
-	total_fare_earned		VARCHAR(10),
+	annual_fare_earned		NUMBER(5,2),
 	vehicle_id			NUMBER(5) NOT NULL,		
 	CONSTRAINT DvehicleID
 		FOREIGN KEY (vehicle_id)
@@ -80,8 +80,8 @@ CREATE TABLE RESERVATION(
 CREATE TABLE LOCATION(
 	gps_id				NUMBER(5) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
-	latitude			VARCHAR(10),
-	longitude			VARCHAR(10),
+	latitude			NUMBER(3,5),
+	longitude			NUMBER(3,5),
 	timestamp			TIMESTAMP,
 	CONSTRAINT LcustomerID
 		FOREIGN KEY (customer_id)
@@ -125,10 +125,10 @@ CREATE TABLE INCIDENT(
 	incident_id			NUMBER(5) PRIMARY KEY NOT NULL,
 	driver_id			NUMBER(5) NOT NULL,
 	customer_id			NUMBER(5),
-	police_report_number		VARCHAR(20) NOT NULL,
+	police_report_number		NUMBER(8) NOT NULL,
 	insurance_company		VARCHAR(110),
 	insurance_name			VARCHAR(110),
-	insurance_number		VARCHAR(110),
+	insurance_number		NUMBER(110),
 	CONSTRAINT IcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,

@@ -53,7 +53,7 @@ CREATE TABLE DRIVER(
 	first_name			VARCHAR(55) NOT NULL,
 	last_name			VARCHAR(55) NOT NULL,
 	cumulative_rating		NUMBER(3),
-	annual_fare_earned		NUMBER(5,2),
+	annual_fare_earned		NUMBER(7,2),
 	vehicle_id			NUMBER(5) NOT NULL,		
 	CONSTRAINT DvehicleID
 		FOREIGN KEY (vehicle_id)
@@ -128,7 +128,7 @@ CREATE TABLE INCIDENT(
 	police_report_number		NUMBER(8) NOT NULL,
 	insurance_company		VARCHAR(110),
 	insurance_name			VARCHAR(110),
-	insurance_number		NUMBER(110),
+	insurance_number		NUMBER(5),
 	CONSTRAINT IcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,

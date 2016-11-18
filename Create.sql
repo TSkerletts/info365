@@ -97,6 +97,7 @@ CREATE TABLE TRIP(
 	destination_location		VARCHAR(20),
 	start_time			TIMESTAMP,
 	end_time			TIMESTAMP,
+	fare				NUMBER (5,2),
 	CONSTRAINT TcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,

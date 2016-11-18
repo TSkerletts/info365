@@ -62,7 +62,7 @@ CREATE TABLE DRIVER(
 
 
 CREATE TABLE RESERVATION(
-	reservation_id			NUMBER(5) PRIMARY KEY NOT NULL,
+	reservation_id		NUMBER(5) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
 	driver_id			NUMBER(5) NOT NULL,
 	expiration_time			TIMESTAMP,
@@ -80,8 +80,8 @@ CREATE TABLE RESERVATION(
 CREATE TABLE LOCATION(
 	gps_id				NUMBER(5) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
-	latitude			NUMBER(3,5),
-	longitude			NUMBER(3,5),
+	latitude			NUMBER(9,5),
+	longitude			NUMBER(9,5),
 	timestamp			TIMESTAMP,
 	CONSTRAINT LcustomerID
 		FOREIGN KEY (customer_id)

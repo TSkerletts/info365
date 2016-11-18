@@ -130,13 +130,15 @@ CREATE TABLE INCIDENT(
 	insurance_company		VARCHAR(110),
 	insurance_name			VARCHAR(110),
 	insurance_number		NUMBER(5),
+	severity				NUMBER(1),
 	CONSTRAINT IcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,
 	CONSTRAINT IdriverID
 		FOREIGN KEY (driver_id)
 		REFERENCES DRIVER(driver_id) ON DELETE CASCADE,
-	CONSTRAINT one_police_report UNIQUE(police_report_number));
+	CONSTRAINT one_police_report UNIQUE(police_report_number),
+	CONSTRAINT check_severity CHECK (severity >0 AND severity <6));
 
 
 

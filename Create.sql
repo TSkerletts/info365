@@ -65,9 +65,9 @@ CREATE TABLE RESERVATION(
 	reservation_id		NUMBER(5) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
 	driver_id			NUMBER(5) NOT NULL,
-	expiration_time			TIMESTAMP,
+	expiration_time			TIMESTAMP, --This is the time where the reservation expired if the driver doesn't show up
 	reservation_date		DATE,
-	start_time			TIMESTAMP,
+	start_time			TIMESTAMP, --This is the time where the driver should show up
 	CONSTRAINT RcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,

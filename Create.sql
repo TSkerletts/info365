@@ -65,16 +65,16 @@ CREATE TABLE RESERVATION(
 	reservation_id		NUMBER(5) PRIMARY KEY NOT NULL,
 	customer_id			NUMBER(5) NOT NULL,
 	driver_id			NUMBER(5) NOT NULL,
-	expiration_time			TIMESTAMP, --This is the time where the reservation expired if the driver doesn't show up
+	expiration_time			TIMESTAMP,
 	reservation_date		DATE,
-	start_time			TIMESTAMP, --This is the time where the driver should show up
+	start_time			TIMESTAMP,
 	CONSTRAINT RcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,
 	CONSTRAINT RdriverID
 		FOREIGN KEY (driver_id)
 		REFERENCES DRIVER(driver_id) ON DELETE CASCADE,
-	CONSTRAINT only_one_reservation UNIQUE(reservation_id,customer_id,driver_id));
+	CONSTRAINT only_one_reservation UNIQUE(reservation_id,customer_id,driver_id,start_time));
 	
 
 CREATE TABLE LOCATION(
@@ -97,7 +97,7 @@ CREATE TABLE TRIP(
 	destination_location		VARCHAR(20),
 	start_time			TIMESTAMP,
 	end_time			TIMESTAMP,
-	fare				NUMBER (5,2),
+	fare				NUMBER (7,2),
 	CONSTRAINT TcustomerID
 		FOREIGN KEY (customer_id)
 		REFERENCES PICKUPCUSTOMERS(customer_id) ON DELETE CASCADE,

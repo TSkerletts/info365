@@ -33,7 +33,7 @@ Pause Testing all functions, and triggers. Results of each test wil be shown on 
 
 
 Pause Cleaning up the database. All tables, functions, triggers, etc, will be removed. <PRESS ENTER TO CONTINUE>
-@Delete.sql
+@Cleanup.sql
 
 
 

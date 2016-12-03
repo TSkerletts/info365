@@ -7,8 +7,8 @@ DROP TRIGGER reducerating_air;
 DROP TRIGGER checkcity_bir;
 DROP TRIGGER checkinsurance_biur;
 DROP TRIGGER checkinspectionstatus_bir;
-DROP TRIGGER addDriverFare_air
-DROP TRIGGER trg_add_points
+DROP TRIGGER addDriverFare_air;
+DROP TRIGGER trg_add_points;
 DROP PROCEDURE giveBonus;
 DROP PROCEDURE punishDriver;
 DROP PROCEDURE addToLoyalty;

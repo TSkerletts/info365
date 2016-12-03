@@ -1,9 +1,10 @@
 SET SERVEROUTPUT ON;
 
-DECLARE
-	v_driver_id DRIVER.driver_id%TYPE;
-        v_driver_fare DRIVER.annual_fare_earned%TYPE;
-        v_driver_commission DRIVER.annual_fare_earned%TYPE;
+spool test.lst;
+
+Prompt =========TESTING FUNCS, TRIGS AND PROCEDURES ===========
+
+Pause About to test the proc_audit_drivers procedure which selects drivers with greater than 10 incidents and deletes them from the database. <PRESS ENTER TO CONTINUE>. 	
 BEGIN
 
 
@@ -14,14 +15,37 @@ BEGIN
 
 	proc_audit_drivers();
 
+END;
+/
+
+
+Pause About to Test the trg_add_points trigger which adds 100 points to customers in the Loyalty program after each new trip. <PRESS ENTER TO CONTINUE>. 
+
 -- Test trg_add_points
 
 	INSERT INTO TRIP VALUES(82126, 30021, 10004, 00009, 'December 15th, 2016', 'December 15th, 2004', '15-DEC-2016 08:11:00 AM', '15-DEC-2004 08:11:00 AM', 3.50);
 
+
+
+
+Pause About to test the func_highest_loyalty Function which returns our most loyal customer. <PRESS ENTER TO CONTINUE>. 
+BEGIN
 -- Test func_highest_loyalty
 
 	DBMS_OUTPUT.PUT_LINE('Customer ' || func_highest_loyalty() || ' is our most appreciated loyal customer.');
+END;
+/
 
+
+
+Pause About to test the func_Calc_commission Funtion which calculates and returns the commission a driver has earned this year. <PRESS ENTER TO CONTINUE>. 
+DECLARE
+
+v_driver_id DRIVER.driver_id%TYPE;
+v_driver_fare DRIVER.annual_fare_earned%TYPE;
+v_driver_commission DRIVER.annual_fare_earned%TYPE;
+
+BEGIN
 -- Test func_calc_commission
 	v_driver_id := 10015;
 	
@@ -37,7 +61,7 @@ END;
 
 
 
---This Tests the p_givebonus Procedure which will increases the annual fare of the driver with max trips by 5%, and return the new fare
+Pause This Tests the givebonus Procedure which will increases the annual fare of the driver with max trips by 5%, and return the new fare . <PRESS ENTER TO CONTINUE>. 
 
 
 DECLARE
@@ -62,7 +86,7 @@ END;
 
 
 
---This Tests the p_punishDriver Procedure which will decrease the annual fare of the driver with max incidents by 10%, and return the new fare
+Pause This Tests the punishDriver Procedure which will decrease the annual fare of the driver with max incidents by 10%, and return the new fare. <PRESS ENTER TO CONTINUE>. 
 
 
 DECLARE
@@ -86,7 +110,8 @@ END;
 /
 
 
---This Tests the p_addToLoyalty that adds customers who have a certain amount of trips to the loyalty program 
+
+Pause This Tests the addToLoyalty that adds customers who have a certain amount of trips to the loyalty program. <PRESS ENTER TO CONTINUE>.  
 
 
 DECLARE
@@ -118,22 +143,22 @@ END;
 
 
 
--- This Tests the checkinsurance_biur Trigger which checks if there is insurance information before insert/update incident else gives an error
+Pause This Tests the checkinsurance_biur Trigger which checks if there is insurance information before insert/update incident else gives an error. <PRESS ENTER TO CONTINUE>. 
 UPDATE INCIDENT
 SET insurance_company = NULL
 WHERE incident_id = 30003;
 
 
--- This Tests the checkinspectionstatus_bir Trigger which checks if the inspection status is passes else gives error
+Pause This Tests the checkinspectionstatus_bir Trigger which checks if the inspection status is passes else gives error. <PRESS ENTER TO CONTINUE>. 
 INSERT INTO VEHICLE VALUES(021, 'ACURA', '4 door car', 'ilx', 2012, 'fail','FWK412');
 
 
--- This Tests the addToFare_air Trigger that adds 80% trip fare to the drivers annual fare after insert on trip
+Pause This Tests the addToFare_air Trigger that adds 80% trip fare to the drivers annual fare after insert on trip. <PRESS ENTER TO CONTINUE>. 
 
 INSERT INTO TRIP VALUES (60021, 30021, 10001, 00001, '20001', '20008', '01-NOV-2016 12:00:00 PM', '01-NOV-2016 12:10:00 PM', 8.00);
 
 
--- This Tests the searchDriverID Procedure, which collects a drivers Id and returns the cumulative rating on that driver if they exists else gives an error
+Pause This Tests the searchDriverID Procedure, which collects a drivers Id and returns the cumulative rating on that driver if they exists else gives an error. <PRESS ENTER TO CONTINUE>. 
 DECLARE
  v_first_name 	driver.first_name%TYPE;
  v_last_name 	driver.last_name%TYPE;
@@ -155,7 +180,8 @@ END;
 /
 
 
---Test addmoreTime procedure, which collects a reservation_id and add 10 minutes to the reservation time. 
+
+Pause Test addmoreTime procedure, which collects a reservation_id and add 10 minutes to the reservation time. <PRESS ENTER TO CONTINUE>.  
 DECLARE
 v_reservationId  Reservation.reservation_id%TYPE;
 
@@ -170,15 +196,27 @@ END;
 /
 
 
---Test Trigger checkcreditcards_bir should raise an error if insert statement doesnt meet triggers excpectations.
-INSERT INTO PICKUPCUSTOMERS VALUES(00021,'Jen', 'Jackson', 3456345339987098, 'JEN JACKSON', TO_DATE(20171007, 'YYYYMMDD'), '5510 Lawnsdowne', 'Philadelphia');
 
---Test Trigger checkfriends_air should return information on friends online
+Pause Test Trigger checkcreditcards_bir should raise an error if insert statement doesnt meet triggers excpectations. <PRESS ENTER TO CONTINUE>. 
+
+INSERT INTO PICKUPCUSTOMERS VALUES(00021,'Jen', 'Jackson', 3456345339987098, 'JEN JACKSON', TO_DATE(20151010, 'YYYYMMDD'), '5510 Lawnsdowne', 'Philadelphia');
+
+
+
+Pause Test Trigger checkfriends_air should return information on friends online. <PRESS ENTER TO CONTINUE>. 
 INSERT INTO RESERVATION VALUES (30023, 00011, 10001, '01-NOV-2016 12:15:00 PM', '01-NOV-2016', '01-NOV-2016 12:00:00 PM');
 
 
---Test Trigger reducerating_air should reduce driver rating and display new rating
+
+Pause Test Trigger reducerating_air should reduce driver rating and display new rating. <PRESS ENTER TO CONTINUE>. 
 INSERT INTO INCIDENT VALUES (30500, 10011, 00003, 10000020, 'GEICO', 'INCIDENT #1', 41110, 3);
 
---Test Trigger checkcities_bir should raise an error if The city of the new customer doesnt exist in the database
+
+
+
+Pause Test Trigger checkcities_bir should raise an error if The city of the new customer doesnt exist in the database. <PRESS ENTER TO CONTINUE>. 
 INSERT INTO PICKUPCUSTOMERS VALUES(00022,'Janett', 'French', 3456345339987098, 'JANE FRENCH', TO_DATE(20181007, 'YYYYMMDD'), '8920 Lawnsdowne', 'DC');
+
+Prompt=======FINISHED TESTING FUNCS, PROCS, AND TRIGGERS=======
+
+spool off;

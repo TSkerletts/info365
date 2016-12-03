@@ -45,7 +45,8 @@ and provides instructions for using these scripts.
 					
 					Using the Scripts
 
-[Note: You can create the database manually by following the steps below, or automatically using Autorun.sql]
+[Note: You can create the database manually by following the steps below, or automatically using Autorun.sql. Output will be spooled to autorun.lst
+]
 
 1. Setting up the database
 	

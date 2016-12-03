@@ -22,7 +22,7 @@ Pause About to Insert Values into the tables. <PRESS ENTER TO CONTINUE>
 
 
 Pause Creating Procedures, Triggers, and functions. Comments in the CreateProcs.sql script will explain what each procedure does. <PRESS ENTER TO CONTINUE>
-@CreateProcs.sql
+@Create_Procs.sql
 
 
 

@@ -31,14 +31,14 @@ and provides instructions for using these scripts.
 
 
 
-4. Test.sql - This script contains several sql and pl/sql statememts that test all procedures and triggers created with the CreateProcs.sql script. 
+4. Test.sql - This script contains several sql and pl/sql statememts that test all procedures and triggers created with the Create_Procs.sql script. 
 
 
-5. CreateProcs.sql - This script creates all procedures and triggers for our database. The script doesnt spool a file, but there are comments within it to explain what each procedur does.
+5. Create_Procs.sql - This script creates all procedures and triggers for our database. The script doesnt spool a file, but there are comments within it to explain what each procedur does.
 
 
 
-6. Delete.sql - This script deletes all tables, procedures, functions and triggers for the pickup database.
+6. Cleanup.sql - This script deletes all tables, procedures, functions and triggers for the pickup database.
 
 
 ==============================================================================================
@@ -59,7 +59,7 @@ and provides instructions for using these scripts.
 2. Setting and Testing up Procedures, Functions and Triggers
 
 
-	2.1 CreateProcs.sql -This script is run with the @CreateProcs.sql command in the ssh shell
+	2.1 Create_Procs.sql -This script is run with the @Create_Procs.sql command in the ssh shell
 
 	2.2 Test.sql - This script is run with the @Test.sql command in the ssh shell. All output will spooled to test.lst file
 
@@ -67,4 +67,4 @@ and provides instructions for using these scripts.
 
 
 3. Cleanup
-	3.1 Delete.sql - This script is run with the @Delete.sql command in the ssh shell
+	3.1 Cleanup.sql - This script is run with the @Cleanup.sql command in the ssh shell
